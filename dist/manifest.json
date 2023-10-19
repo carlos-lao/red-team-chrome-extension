@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "name": "Red Team Helper",
+  "description": "A Chrome extension for Meta's standing red team.",
+  "action": {
+    "default_popup": "js/index.html",
+    "default_title": "Red Team Helper"
+  },
+  "content_scripts": [{
+    "matches": ["https://www.internalfb.com/agentsplayground*"],
+    "js": ["js/playgroundScript.js"]
+  }],
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage"
+  ]
+}
