@@ -7,8 +7,9 @@ const observeUrlChange = () => {
       oldHref = document.location.href;
       chrome.storage.session.get(["task"]).then(({ task }) => {
         if (task && oldHref.indexOf(task) === -1) {
+          const prefix = oldHref.indexOf("?") === -1 ? oldHref : oldHref.slice(0, oldHref.indexOf("?"))
           setTimeout(() => {
-            document.location.href = `${oldHref.slice(0,oldHref.indexOf("?"))}?redteamingtaskid=${task}`
+            document.location.href = `${prefix}?redteamingtaskid=${task}`
           }, 1000);
         }
       })
